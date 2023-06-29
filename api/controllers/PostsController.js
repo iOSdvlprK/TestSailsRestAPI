@@ -47,7 +47,8 @@ module.exports = {
         return res.serverError(err.toString());
       }
       console.log('Finished creating post object');
-      return res.end();
+      // return res.end();
+      return res.redirect('/home');
     });
   },
 
