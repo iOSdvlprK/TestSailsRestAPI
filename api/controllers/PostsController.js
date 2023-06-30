@@ -32,29 +32,30 @@ module.exports = {
     }
   },
 
-  create: function(req, res) {
-    const title = req.body.title;
-    const postBody = req.body.postBody;
+  // create: function(req, res) {
+  //   const title = req.body.title;
+  //   const postBody = req.body.postBody;
 
-    sails.log.debug('My title: ' + title);
-    sails.log.debug('Body: ' + postBody);
+  //   sails.log.debug('My title: ' + title);
+  //   sails.log.debug('Body: ' + postBody);
 
-    Post.create({
-      title: title,
-      body: postBody
-    }).exec((err) => {
-      if (err) {
-        return res.serverError(err.toString());
-      }
-      console.log('Finished creating post object');
-      // return res.end();
-      return res.redirect('/home');
-    });
-  },
+  //   Post.create({
+  //     title: title,
+  //     body: postBody
+  //   }).exec((err) => {
+  //     if (err) {
+  //       return res.serverError(err.toString());
+  //     }
+  //     console.log('Finished creating post object');
+  //     // return res.end();
+  //     return res.redirect('/home');
+  //   });
+  // },
 
   findById: function(req, res) {
     const postId = req.param('postId');
     const filteredPosts = allPosts
+      // eslint-disable-next-line eqeqeq
       .filter(p => {return p.id == postId;});
 
     if (filteredPosts.length > 0) {
@@ -64,9 +65,9 @@ module.exports = {
     }
   },
 
-  delete: async function(req, res) {
-    const postId = req.param('postId');
-    await Post.destroy({id: postId});
-    res.send('Trying to delete post now');
-  }
+  // delete: async function(req, res) {
+  //   const postId = req.param('postId');
+  //   await Post.destroy({id: postId});
+  //   res.send('Trying to delete post now');
+  // }
 };
